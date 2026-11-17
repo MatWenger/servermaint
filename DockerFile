@@ -1,0 +1,17 @@
+FROM ubuntu:24.04
+
+# install necessary (base) software on docker to imitate a fresh install
+RUN apt-get update \
+  ## Install git and certs for https:
+  && apt-get install -y --no-install-recommends git ca-certificates \
+  ## remove apt universe so we can't install anything else
+  && rm -rf /var/lib/apt/lists/*
+
+# clone the repo
+# RUN git clone --depth 1 https://gitub.com/MatWenger/
+
+# change to the downloaded repo
+# WORKDIR /app
+
+# run the install shell
+# CMD ["bash", "./scripts/install.sh"]
