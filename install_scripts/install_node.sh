@@ -1,5 +1,5 @@
 #!/bin/bash
-echo 'Installing Node...'
+echo 'Installing Node.js and NVM...'
 
 apt-get install -y curl
 
@@ -12,6 +12,5 @@ echo 'Installing NVM (Node Version Manager)...'
 export NVM_DIR="$HOME/.nvm"
 . "$NVM_DIR/nvm.sh" || exit 1
 
-
-#if I ever want to pin a version of node to this project (probably will after development), uncomment this line
 nvm install 22.22.0
+echo $(node --version)

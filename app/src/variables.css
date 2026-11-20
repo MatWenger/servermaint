@@ -1,0 +1,46 @@
+:root {
+  /* constants across light/dark mode */
+  --active-background: #c5e9e6;
+  --active-text: #1a5c58;
+  --progress-fill: #029991;
+  --border: #2c3033;
+  --btn-main-action-background: #007872;
+  --btn-main-action-text: white;
+  --btn-start-action-background: #c5ece8;
+  --btn-start-action-text: #045552;
+  --btn-stop-action-background: #fcdcd5;
+  --btn-stop-action-text: #922925;
+  --h1-font-size: 28px;
+  --h2-font-size: 38px;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  /* lightmode colors */
+  --bg: #f7f5f7;
+  --text: #1f2025;
+  --bg-focus: #f0f0f0;
+  --btn-generic-border: #8c8d91;
+  --icon-stroke: black;
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --h1-font-size: 20px;
+    --h2-font-size: 24px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15191d;
+    --bg-focus: #282b2f;
+    --text: #f5f1e8;
+    --menu-bg: #15191d;
+    --btn-generic-border: #8c8d91;
+    --icon-stroke: white;
+  }
+}

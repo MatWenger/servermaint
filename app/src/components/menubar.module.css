@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.menuHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.projectName {
+  font-size: var(--h1-font-size);
+  text-align: left;
+  width: 80%;
+}
+
+.hamburger,
+.icon {
+  color: var(--icon-stroke);
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.menu {
+  height: 0;
+  overflow: hidden;
+  transition-duration: 2.5s;
+  transition-delay: 0ms;
+  z-index: 9;
+  position: absolute;
+  width: calc(100% - 16px);
+  padding: 12px 8px;
+  top: 41px;
+  opacity: 1;
+  background-color: var(--bg-focus);
+  border-bottom: thin solid white;
+
+  &.active {
+    animation: showMenu 3s;
+    transition-delay: 3s;
+    transition-duration: 0ms;
+    transition: height;
+    height: calc(100dvh - 62px);
+  }
+}
+
+@keyframes showMenu {
+  0% {
+    height: 1px;
+  }
+  100% {
+    height: calc(100dvh - 86px);
+  }
+}
+
+.menuItem {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  div {
+    height: 36px;
+    vertical-align: middle;
+    font-size: 24px;
+    margin-top: 5px;
+  }
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+}
