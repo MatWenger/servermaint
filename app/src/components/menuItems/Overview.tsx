@@ -2,12 +2,14 @@ import styles from "../menubar.module.css";
 
 export default function Overview({
   menuStateHandler,
+  active,
 }: {
   menuStateHandler: (key: string) => void;
+  active: boolean;
 }) {
   return (
-    <div
-      className={styles.menuItem}
+    <button
+      className={`${styles.menuItem} ${active ? styles.selected : ""}`}
       onClick={() => {
         menuStateHandler("overview");
       }}
@@ -26,6 +28,6 @@ export default function Overview({
         />
       </svg>
       <div>Overview</div>
-    </div>
+    </button>
   );
 }

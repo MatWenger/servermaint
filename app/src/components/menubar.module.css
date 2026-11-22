@@ -5,6 +5,12 @@
   position: relative;
 }
 
+.menuItem {
+  div {
+    color: var(--text);
+  }
+}
+
 .menuHeader {
   display: flex;
   flex-direction: row;
@@ -36,28 +42,54 @@
   transition-delay: 0ms;
   z-index: 9;
   position: absolute;
-  width: calc(100% - 16px);
-  padding: 12px 8px;
+  width: calc(100dvw - 32px);
   top: 41px;
+  padding: 0 8px;
   opacity: 1;
   background-color: var(--bg-focus);
   border-bottom: thin solid white;
+  animation: hideMenu 2.5s;
 
   &.active {
     animation: showMenu 3s;
     transition-delay: 3s;
     transition-duration: 0ms;
-    transition: height;
-    height: calc(100dvh - 62px);
+    transition: all;
+    padding: 12px 8px;
+    height: calc(100dvh - 86px);
   }
+
+  &.loading {
+    animation: none !important;
+  }
+}
+
+.selected {
+  background-color: var(--btn-start-action-text);
+  border-radius: 6px;
 }
 
 @keyframes showMenu {
   0% {
     height: 1px;
   }
+  12% {
+    padding-top: 12px;
+  }
   100% {
     height: calc(100dvh - 86px);
+  }
+}
+
+@keyframes hideMenu {
+  0% {
+    height: calc(100dvh - 86px);
+  }
+  88% {
+    padding-top: 1px;
+  }
+  100% {
+    height: 1px;
   }
 }
 
@@ -76,4 +108,66 @@
 .icon {
   width: 36px;
   height: 36px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 44px;
+    border-right: 2px solid var(--border);
+    height: calc(100dvh - 24px);
+    gap: 24px;
+  }
+
+  .hamburger,
+  .projectName {
+    display: none;
+  }
+
+  .menu {
+    position: relative;
+    display: contents;
+    height: 100%;
+    transition: none;
+    padding: 12px 8px;
+
+    .menuList {
+      gap: 12px;
+    }
+
+    &.active {
+      animation: none;
+    }
+
+    .menuItem div {
+      display: none;
+    }
+  }
+}
+@media screen and (min-width: 1025px) {
+  .container {
+    width: 180px;
+  }
+  .projectName {
+    display: block;
+  }
+  .menu {
+    .menuList {
+      border-top: thin solid var(--border);
+      padding-top: 12px;
+      gap: 12px;
+      width: 95%;
+      svg {
+        height: 24px;
+        width: 24px;
+        margin-top: 8px;
+      }
+      div {
+        display: block;
+        font-size: 20px;
+        margin-top: 8px;
+      }
+    }
+  }
 }

@@ -13,3 +13,10 @@ select,
 textarea {
   font: inherit;
 }
+
+button {
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}

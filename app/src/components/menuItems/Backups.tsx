@@ -2,14 +2,16 @@ import styles from "../menubar.module.css";
 
 export default function Backups({
   menuStateHandler,
+  active,
 }: {
   menuStateHandler: (key: string) => void;
+  active: boolean;
 }) {
   return (
-    <div
-      className={styles.menuItem}
+    <button
+      className={`${styles.menuItem} ${active ? styles.selected : ""}`}
       onClick={() => {
-        menuStateHandler("overview");
+        menuStateHandler("backups");
       }}
     >
       {/* <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --> */}
@@ -27,6 +29,6 @@ export default function Backups({
         />
       </svg>
       <div>Backups</div>
-    </div>
+    </button>
   );
 }

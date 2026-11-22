@@ -2,14 +2,16 @@ import styles from "../menubar.module.css";
 
 export default function Jobs({
   menuStateHandler,
+  active,
 }: {
   menuStateHandler: (key: string) => void;
+  active: boolean;
 }) {
   return (
-    <div
-      className={styles.menuItem}
+    <button
+      className={`${styles.menuItem} ${active ? styles.selected : ""}`}
       onClick={() => {
-        menuStateHandler("overview");
+        menuStateHandler("jobs");
       }}
     >
       {/* <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools --> */}
@@ -28,6 +30,6 @@ export default function Jobs({
         />
       </svg>
       <div>Jobs</div>
-    </div>
+    </button>
   );
 }

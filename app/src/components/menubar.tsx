@@ -12,10 +12,13 @@ export default function MenuBar({
   selectMenuItem,
 }: {
   selectedMenuItem: string;
-  setActiveMenuItem: (menuItem: string) => void;
+  selectMenuItem: (menuItem: string) => void;
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuLoading, setMenuLoading] = useState(true);
+
   const handleMenuClick = () => {
+    setMenuLoading(false);
     setMenuOpen(!menuOpen);
   };
 
@@ -55,29 +58,36 @@ export default function MenuBar({
           </svg>
         </div>
       </header>
-      <section className={`${styles.menu} ${menuOpen ? styles.active : ""}`}>
+      <section
+        className={`${styles.menu} ${menuLoading ? styles.loading : ""} ${menuOpen ? styles.active : ""}`}
+      >
         <div className={styles.menuList}>
           <Overview
+            active={selectedMenuItem === "overview"}
             menuStateHandler={(key) => {
               selectMenuItem(key);
             }}
           />
           <Servers
+            active={selectedMenuItem === "servers"}
             menuStateHandler={(key) => {
               selectMenuItem(key);
             }}
           />
           <Jobs
+            active={selectedMenuItem === "jobs"}
             menuStateHandler={(key) => {
               selectMenuItem(key);
             }}
           />
           <Backups
+            active={selectedMenuItem === "backups"}
             menuStateHandler={(key) => {
               selectMenuItem(key);
             }}
           />
           <Settings
+            active={selectedMenuItem === "settings"}
             menuStateHandler={(key) => {
               selectMenuItem(key);
             }}
