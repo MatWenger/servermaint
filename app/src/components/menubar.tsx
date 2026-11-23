@@ -58,8 +58,9 @@ export default function MenuBar({
           </svg>
         </div>
       </header>
-      <section
+      <menu
         className={`${styles.menu} ${menuLoading ? styles.loading : ""} ${menuOpen ? styles.active : ""}`}
+        inert={!menuOpen}
       >
         <div className={styles.menuList}>
           <Overview
@@ -93,7 +94,7 @@ export default function MenuBar({
             }}
           />
         </div>
-      </section>
+      </menu>
     </div>
   );
 }

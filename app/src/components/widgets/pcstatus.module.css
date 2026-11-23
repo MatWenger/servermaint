@@ -1,0 +1,45 @@
+.widgetContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: -12px 0;
+}
+
+.widget {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  border-bottom: thin solid var(--border);
+  padding: 8px 0;
+}
+
+.widget:not(:has(~ .widget)) {
+  border-bottom: none;
+}
+
+.widgetHeader {
+  font-size: 11px;
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.widgetValue {
+  display: block;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.widgetIcon {
+  width: 32px;
+}
+
+.widgetData {
+  width: 80%;
+}
+
+.widgetProgressbar {
+  width: auto;
+}

@@ -11,7 +11,8 @@
   --btn-stop-action-background: #fcdcd5;
   --btn-stop-action-text: #922925;
   --h1-font-size: 28px;
-  --h2-font-size: 38px;
+  --h2-font-size: 16px;
+  --card-background: #f3f1ef;
   font-family:
     system-ui,
     -apple-system,
@@ -21,17 +22,11 @@
 
   /* lightmode colors */
   --bg: #f7f5f7;
-  --text: #1f2025;
   --bg-focus: #f0f0f0;
+  --text: #1f2025;
+  --menu-bg: #f0f0f0;
   --btn-generic-border: #8c8d91;
   --icon-stroke: black;
-}
-
-@media screen and (min-width: 1024px) {
-  :root {
-    --h1-font-size: 20px;
-    --h2-font-size: 24px;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,7 +35,23 @@
     --bg-focus: #282b2f;
     --text: #f5f1e8;
     --menu-bg: #15191d;
+    --card-background: #1c2023;
+
     --btn-generic-border: #8c8d91;
     --icon-stroke: white;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --h1-font-size: 32px;
+    --h2-font-size: 24px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --h1-font-size: 32px;
+    --h2-font-size: 24px;
   }
 }

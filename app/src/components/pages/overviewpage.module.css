@@ -1,0 +1,18 @@
+.btn-addServer {
+  background-color: var(--btn-main-action-background);
+  color: white;
+  display: flex;
+  font-size: 14px;
+  flex-direction: row;
+  margin-top: 36px;
+  height: fit-content;
+  padding: 9px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .btn-addServer {
+    font-size: 18px;
+  }
+}
