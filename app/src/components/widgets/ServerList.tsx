@@ -7,8 +7,8 @@ function Server({ serverData }: { serverData: any }) {
       <div
         style={{
           display: "grid",
-          gridTemplateRows: "3.5cap 2cap 3cap 3cap",
-          gridTemplateColumns: "50% 50%",
+          gridTemplateRows: "3.5cap 2cap 5.5cap 5.5cap",
+          gridTemplateColumns: "repeat(2, calc(50% - 5px)",
           columnGap: 10,
           fontSize: 16,
         }}
@@ -22,8 +22,35 @@ function Server({ serverData }: { serverData: any }) {
         >
           {serverData.running === true ? "running" : "stopped"}
         </div>
-        <div className={styles.serverStats}>1, 2, 3</div>
-        <div className={styles.serverActions}>Manage, restart, stop</div>
+        <div className={styles.serverStats}>
+          <div>
+            Players <br />
+            {serverData.activePlayers}/16
+          </div>
+
+          <div>
+            Memory <br />
+            {serverData.memoryUse}GB / 32GB
+          </div>
+
+          <div>
+            Uptime <br />
+            {serverData.uptime}
+          </div>
+        </div>
+        <div className={styles.serverActions}>
+          <div>
+            Manage <br />
+          </div>
+
+          <div>
+            Restart <br />
+          </div>
+
+          <div>
+            Stop <br />
+          </div>
+        </div>
       </div>
     </>
   );
@@ -51,7 +78,7 @@ export function ServerList({
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: "12px",
+        gap: "18px",
       }}
     >
       {servers.slice(0, limit ? limit : servers.length).map((server) => (

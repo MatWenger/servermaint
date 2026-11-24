@@ -10,7 +10,7 @@ const serverStatus: ServerDefinition[] = [
   {
     game: "Palworld",
     name: "Friends World",
-    image: "assets/palworld.png",
+    image: "/game_heros/palworldsplash.png",
     running: true,
     activePlayers: 4,
     memoryUse: 5.4,
@@ -19,7 +19,7 @@ const serverStatus: ServerDefinition[] = [
   {
     game: "Valheim",
     name: "Northlands",
-    image: "assets/valheim.png",
+    image: "/game_heros/valheimsplash.png",
     running: false,
     activePlayers: 0,
     memoryUse: 0,
