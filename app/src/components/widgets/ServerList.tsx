@@ -1,9 +1,20 @@
+import Card from "../shared/Card";
 import styles from "./servers.module.css";
-import shared from "./shared.module.css";
+// import shared from "./shared.module.css";
+
+export type ServerDefinition = {
+  game: string;
+  name: string;
+  image: string;
+  running: boolean;
+  activePlayers: number;
+  memoryUse: number;
+  uptime: string | null;
+};
 
 function Server({ serverData }: { serverData: any }) {
   return (
-    <>
+    <Card>
       <div
         style={{
           display: "grid",
@@ -22,49 +33,54 @@ function Server({ serverData }: { serverData: any }) {
         >
           {serverData.running === true ? "running" : "stopped"}
         </div>
-        <div className={styles.serverStats}>
+        <div
+          className={`${styles.serverStats} ${!serverData.running && styles.idle}`}
+        >
           <div>
             Players <br />
             {serverData.activePlayers}/16
           </div>
 
-          <div>
-            Memory <br />
-            {serverData.memoryUse}GB / 32GB
-          </div>
+          {serverData.running && (
+            <div>
+              Memory <br />
+              {serverData.memoryUse}GB / 32GB
+            </div>
+          )}
 
-          <div>
-            Uptime <br />
-            {serverData.uptime}
-          </div>
+          {serverData.running ? (
+            <div>
+              Uptime <br />
+              {serverData.uptime}
+            </div>
+          ) : (
+            <div>
+              Last Active <br />
+              Yesterday
+            </div>
+          )}
         </div>
-        <div className={styles.serverActions}>
-          <div>
-            Manage <br />
-          </div>
+        <div
+          className={`${styles.serverActions} ${!serverData.running && styles.idle}`}
+        >
+          <button>Manage</button>
+          {serverData.running && (
+            <>
+              <button>Restart</button>
 
-          <div>
-            Restart <br />
-          </div>
-
-          <div>
-            Stop <br />
-          </div>
+              <button className={styles.stop}>Stop</button>
+            </>
+          )}
+          {!serverData.running && (
+            <>
+              <button className={styles.start}>Start</button>
+            </>
+          )}
         </div>
       </div>
-    </>
+    </Card>
   );
 }
-
-export type ServerDefinition = {
-  game: string;
-  name: string;
-  image: string;
-  running: boolean;
-  activePlayers: number;
-  memoryUse: number;
-  uptime: string | null;
-};
 
 export function ServerList({
   servers,

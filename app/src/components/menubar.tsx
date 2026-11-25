@@ -23,7 +23,7 @@ export default function MenuBar({
   };
 
   return (
-    <div className={styles.container}>
+    <>
       <header className={styles.menuHeader}>
         <img src={serverGlyph} width={36} height={36} />
         <div className={styles.projectName}>Server Maintainer</div>
@@ -95,6 +95,6 @@ export default function MenuBar({
           />
         </div>
       </menu>
-    </div>
+    </>
   );
 }

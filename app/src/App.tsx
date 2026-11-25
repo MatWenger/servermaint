@@ -13,11 +13,13 @@ function App() {
 
   return (
     <div className={layout.app}>
-      <MenuBar
-        selectedMenuItem={activeMenuItem}
-        selectMenuItem={selectMenuItem}
-      />
-      <section id="content">
+      <div className={layout.menu}>
+        <MenuBar
+          selectedMenuItem={activeMenuItem}
+          selectMenuItem={selectMenuItem}
+        />
+      </div>
+      <section className={layout.content}>
         {activeMenuItem === "overview" ? (
           <>
             <OverviewPage></OverviewPage>
@@ -26,6 +28,8 @@ function App() {
           <></>
         )}
       </section>
+      {/* Convert to component */}
+      <footer className={layout.footer}> Footer </footer>
     </div>
   );
 }

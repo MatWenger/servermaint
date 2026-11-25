@@ -1,3 +1,10 @@
+:root {
+  --border-green: #52e561;
+  --body-green: #265d29;
+  --border-red: #e56152;
+  --body-red: #5d2926;
+}
+
 .heroImage {
   border: thin solid white;
   border-radius: 6px;
@@ -16,12 +23,13 @@
 .serverStatus {
   grid-column-start: 2;
   padding: 2px 12px 0 calc(2ch + 12px);
-  background-color: #5d2926;
+  background-color: var(--body-red);
+  color: var(--badge-color);
   border-radius: 10px;
   width: auto;
   max-width: 8ch;
   height: 100%;
-  border: thin solid #e56152;
+  border: thin solid var(--border-red);
   position: relative;
   text-transform: uppercase;
 }
@@ -31,8 +39,8 @@
   position: absolute;
   top: 6px;
   left: 1ch;
-  border: 2px solid #e56152;
-  background-color: #e56152;
+  border: 2px solid var(--border-red);
+  background-color: var(--border-red);
   margin-right: 1ch;
   /* margin-top: 6px; */
   border-radius: 100%;
@@ -47,8 +55,8 @@
 }
 
 .serverStatus.running::before {
-  background-color: #52e561;
-  border-color: #52e561;
+  background-color: var(--border-green);
+  border-color: var(--border-green);
 }
 
 .serverStats {
@@ -59,17 +67,51 @@
   width: 100%;
   justify-content: space-between;
   margin-top: 6px;
+  font-size: 12px;
+  font-weight: bold;
 }
+
 .serverStats > div {
   width: 33%;
   padding: 12px;
   height: auto;
   flex: 1;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.serverActions > button {
+  border: thin solid var(--border);
+  background-color: #2d3134;
+  border-radius: 8px;
+  width: 100%;
+  height: 4cap;
+  margin-top: 18px;
+  color: white;
+
+  &.stop {
+    background-color: var(--body-red);
+    border-color: var(--border-red);
+  }
+
+  &.start {
+    background-color: var(--body-green);
+    border-color: var(--border-green);
+  }
+}
+
+.serverActions.idle > button {
+  width: 50%;
 }
 
 .serverStats > div:nth-of-type(2) {
   border-left: thin solid var(--border);
   border-right: thin solid var(--border);
+}
+
+.serverStats.idle > div:nth-of-type(2) {
+  border-left: thin solid var(--border);
+  border-right: none;
 }
 
 .serverActions {

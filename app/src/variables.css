@@ -27,6 +27,19 @@
   --menu-bg: #f0f0f0;
   --btn-generic-border: #8c8d91;
   --icon-stroke: black;
+  --badge-text: #f5f1e8;
+}
+
+:root.dark {
+  --bg: #15191d;
+  --bg-focus: #282b2f;
+  --text: #f5f1e8;
+  --badge-text: #1f2025;
+  --menu-bg: #15191d;
+  --card-background: #1c2023;
+
+  --btn-generic-border: #8c8d91;
+  --icon-stroke: white;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,6 +47,8 @@
     --bg: #15191d;
     --bg-focus: #282b2f;
     --text: #f5f1e8;
+    --badge-text: #1f2025;
+
     --menu-bg: #15191d;
     --card-background: #1c2023;
 

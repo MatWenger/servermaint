@@ -10,7 +10,7 @@ const thresholds: progressThreshold[] = [
   { min: 80, max: 100, color: "#B65353" },
 ];
 
-export default function PCStatus({}) {
+export default function PCStatus({ status }: { status: SystemStatus }) {
   return (
     <div className={styles.widgetContainer}>
       <div className={styles.widget}>
@@ -33,7 +33,7 @@ export default function PCStatus({}) {
           <span className={styles.widgetHeader}>CPU</span>
           <span className={styles.widgetValue}>18%</span>
         </div>
-        <ProgressBar value={18} max={100} thresholds={thresholds} />
+        <ProgressBar value={status.cpuUsed} max={100} thresholds={thresholds} />
       </div>
       <div className={styles.widget}>
         <div className={styles.widgetIcon}>
@@ -64,9 +64,15 @@ export default function PCStatus({}) {
         </div>
         <div className={styles.widgetData}>
           <span className={styles.widgetHeader}>RAM</span>
-          <span className={styles.widgetValue}>8.2 GB / 32 GB</span>
+          <span className={styles.widgetValue}>
+            {status.ramUsed} GB / {status.ramAvailable} GB
+          </span>
         </div>
-        <ProgressBar value={8.2} max={32} thresholds={thresholds} />
+        <ProgressBar
+          value={status.ramUsed}
+          max={status.ramAvailable}
+          thresholds={thresholds}
+        />
       </div>
       <div className={styles.widget}>
         <div className={styles.widgetIcon}>
@@ -89,9 +95,15 @@ export default function PCStatus({}) {
         </div>
         <div className={styles.widgetData}>
           <span className={styles.widgetHeader}>Storage</span>
-          <span className={styles.widgetValue}>186 GB / 512 GB</span>
+          <span className={styles.widgetValue}>
+            {status.storageUsed} GB / {status.storageAvailable} GB
+          </span>
         </div>
-        <ProgressBar value={186} max={512} thresholds={thresholds} />
+        <ProgressBar
+          value={status.storageUsed}
+          max={status.storageAvailable}
+          thresholds={thresholds}
+        />
       </div>
     </div>
   );

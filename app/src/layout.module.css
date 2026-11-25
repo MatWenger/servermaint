@@ -3,8 +3,33 @@
   flex-direction: column;
 }
 
+.menu {
+  height: 44px;
+  margin-bottom: 12px;
+}
+
+.content {
+  height: calc(100dvh - 124px);
+  overflow: auto;
+}
+
+.footer {
+  margin-top: 12px;
+  border-top: thin solid var(--border);
+  height: 41px;
+}
+
 @media screen and (min-width: 768px) {
   .app {
     flex-direction: row;
+  }
+  .menu {
+    height: 108px;
+    display: flex;
+    flex-direction: column;
+    width: 44px;
+    border-right: 2px solid var(--border);
+    height: calc(100dvh - 24px);
+    gap: 24px;
   }
 }
