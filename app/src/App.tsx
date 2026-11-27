@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 import layout from "./layout.module.css";
-import MenuBar from "./components/menubar";
+import MenuBar from "./components/Menubar";
 import OverviewPage from "./components/pages/OverviewPage";
+import Footer from "./components/Footer";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [activeMenuItem, setActiveMenuItem] = useState("overview");
@@ -20,16 +22,9 @@ function App() {
         />
       </div>
       <section className={layout.content}>
-        {activeMenuItem === "overview" ? (
-          <>
-            <OverviewPage></OverviewPage>
-          </>
-        ) : (
-          <></>
-        )}
+        <Outlet />
       </section>
-      {/* Convert to component */}
-      <footer className={layout.footer}> Footer </footer>
+      <Footer />
     </div>
   );
 }
