@@ -1,19 +1,24 @@
 import {
   createContext,
+  useEffect,
+  useRef,
   useState,
   type Dispatch,
   type ReactNode,
   type SetStateAction,
 } from "react";
 
+import { websocket } from "../api/api";
+
 type ConnectionStatus = "connecting" | "connected" | "disconnected";
 
 type ConnectionContextValue = {
   state: {
-    connection: ConnectionStatus;
+    status: ConnectionStatus;
+    connection: WebSocket | null;
   };
   actions: {
-    setConnection: Dispatch<SetStateAction<ConnectionStatus>>;
+    setConnectionStatus: Dispatch<SetStateAction<ConnectionStatus>>;
   };
 };
 
@@ -22,14 +27,38 @@ export const ConnectionContext = createContext<
 >(undefined);
 
 export function ConnectionProvider({ children }: { children: ReactNode }) {
-  const [connection, setConnection] =
+  const [connectionStatus, setConnectionStatus] =
     useState<ConnectionStatus>("disconnected");
+
+  const socket = useRef<WebSocket | null>(null);
+
+  useEffect(() => {
+    const ws = new WebSocket(websocket);
+    socket.current = ws;
+
+    ws.onopen = () => {
+      console.log("connected");
+    };
+
+    ws.onclose = () => {
+      console.log("closed");
+    };
+
+    ws.onmessage = (event) => {
+      console.log(event);
+    };
+
+    return () => {
+      ws.onmessage = null;
+      ws.close();
+    };
+  }, []);
 
   return (
     <ConnectionContext.Provider
       value={{
-        state: { connection },
-        actions: { setConnection },
+        state: { status: connectionStatus },
+        actions: { setConnectionStatus },
       }}
     >
       {children}
